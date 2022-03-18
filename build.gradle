@@ -103,6 +103,10 @@ shadowJar {
     }
 }
 
+shadowJar {
+    destinationDirectory.set(file("D:/stuff/Code/debug-server/plugins"))
+}
+
 compileJava.dependsOn clean
 build.dependsOn shadowJar
 

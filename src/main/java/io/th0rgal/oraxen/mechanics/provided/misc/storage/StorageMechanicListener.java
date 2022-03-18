@@ -47,7 +47,7 @@ public class StorageMechanicListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if ((event.getAction() != Action.RIGHT_CLICK))
+        if ((event.getAction() != Action.RIGHT_CLICK_AIR) ||  (event.getAction() != Action.RIGHT_CLICK_BLOCK))
             return;
         ItemStack item = event.getItem();
         String id = OraxenItems.getIdByItem(item);
@@ -61,9 +61,9 @@ public class StorageMechanicListener implements Listener {
         event.setCancelled(true);
         StorageMechanic mechanic = (StorageMechanic) factory.getMechanic(id);
         //Initilize GUI
-        ItemMeta im = is.getItemMeta();
+        ItemMeta im = item.getItemMeta();
         item.setItemMeta(im);
-        ArrayList<ItemStack> contents = get(is);
+        ArrayList<ItemStack> contents = get(item);
         Inventory storage = Bukkit.createInventory(event.getPlayer(), (mechanic.getRows() * 9), mechanic.getTitle());
         ArrayList<ItemStack> itemOverflow = new ArrayList<>();
         for (ItemStack itemStack : contents) {
@@ -76,7 +76,7 @@ public class StorageMechanicListener implements Listener {
         event.getPlayer().openInventory(storage);
         //End of GUI Initialization
         if(mechanic.hasSound())
-            event.getPlayer().playSound(event.getPlayer().getLocation(), mechanic.getSound(), 1.0, 1.0);
+            event.getPlayer().playSound(event.getPlayer().getLocation(), mechanic.getSound(), 1.0F, 1.0F);
     }
 
     @EventHandler

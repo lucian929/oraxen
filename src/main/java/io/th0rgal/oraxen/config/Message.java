@@ -62,7 +62,8 @@ public enum Message {
     DYE_FAILED("command.dye.failed"),
 
     // mechanics
-    MECHANICS_NOT_ENOUGH_EXP("mechanics.not_enough_exp");
+    MECHANICS_NOT_ENOUGH_EXP("mechanics.not_enough_exp"),
+    MECHANICS_STORAGE("mechanics.storage");
 
     private final String path;
 
