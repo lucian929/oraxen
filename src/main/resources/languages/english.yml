@@ -77,3 +77,4 @@ command:
 
 mechanics:
   not_enough_exp: "<prefix><#fa4943>You need more experience to do this"
+  storage: "<prefix><#fa4943>changeme"

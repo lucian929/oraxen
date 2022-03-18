@@ -8,6 +8,7 @@ import io.th0rgal.oraxen.utils.drops.Drop;
 import io.th0rgal.oraxen.utils.drops.Loot;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.Sound;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -23,6 +24,11 @@ public class NoteBlockMechanic extends Mechanic {
     private String model;
     private int period;
     private final int light;
+
+    private final String title;
+    private final int rows;
+    private final boolean keepItems;
+    private final Sound sound;
     private final List<ClickAction> clickActions;
 
     @SuppressWarnings("unchecked")
@@ -75,6 +81,21 @@ public class NoteBlockMechanic extends Mechanic {
             period = section.getInt("hardness");
         } else hasHardness = false;
 
+        //Storage block (Attempt 9923)
+        if(section.isConfigurationSection("storage")) {
+            ConfigurationSection storage = section.getConfigurationSection("storage");
+            this.keepItems = storage.getBoolean("keepItems");
+            this.title = storage.getString("title");
+            this.rows = storage.getInt("rows");
+            this.sound = Sound.valueOf(storage.getString("sound"));
+        }
+        else {
+             this.keepItems = false;
+             this.title = "Storage Block";
+             this.rows = 2;
+             this.sound = null;
+        }
+
         light = section.getInt("light", -1);
         clickActions = ClickAction.parseList(section);
     }
@@ -108,6 +129,26 @@ public class NoteBlockMechanic extends Mechanic {
 
     public String getPlaceSound() {
         return placeSound;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public boolean getKeepItems() {
+        return keepItems;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public boolean hasSound() {
+        return sound != null;
+    }
+
+    public Sound getSoundType() {
+        return sound;
     }
 
     public int getPeriod() {
