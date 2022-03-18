@@ -28,8 +28,10 @@ import io.th0rgal.oraxen.mechanics.provided.misc.armorpotioneffects.ArmorPotionE
 import io.th0rgal.oraxen.mechanics.provided.misc.consumable.ConsumableMechanicFactory;
 import io.th0rgal.oraxen.mechanics.provided.misc.consumablepotioneffects.ConsumablePotionEffectsMechanicFactory;
 import io.th0rgal.oraxen.mechanics.provided.misc.custom.CustomMechanicFactory;
+import io.th0rgal.oraxen.mechanics.provided.misc.storage.StorageMechanicFactory;
 import io.th0rgal.oraxen.mechanics.provided.misc.itemtype.ItemTypeMechanicFactory;
 import io.th0rgal.oraxen.mechanics.provided.misc.soulbound.SoulBoundMechanicFactory;
+import io.th0rgal.oraxen.mechanics.provided.misc.storage.StorageMechanicFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -58,6 +60,7 @@ public class MechanicsManager {
         registerMechanicFactory("itemtype", ItemTypeMechanicFactory::new);
         registerMechanicFactory("consumable", ConsumableMechanicFactory::new);
         registerMechanicFactory("custom", CustomMechanicFactory::new);
+        registerMechanicFactory("storage", StorageMechanicFactory::new);
 
         // gameplay
         registerMechanicFactory("repair", RepairMechanicFactory::new);

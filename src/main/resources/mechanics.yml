@@ -21,6 +21,9 @@ itemtype:
 soulbound:
   enabled: true
 
+storage:
+  enabled: true
+
 
 # GAMEPLAY
 
